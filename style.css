@@ -111,6 +111,32 @@ select:focus {
     line-height: 1.5;
 }
 
+.bazi-display {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 3px solid #d63384;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(214, 51, 132, 0.2);
+}
+
+.bazi-row {
+    font-size: 36px;
+    font-weight: bold;
+    color: #d63384;
+    letter-spacing: 20px;
+    line-height: 1.8;
+    font-family: 'KaiTi', '楷體', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bazi-row:first-child {
+    border-bottom: 2px solid #d63384;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
 .loading {
     margin-top: 30px;
     text-align: center;
@@ -211,5 +237,14 @@ select:focus {
     #baziResult {
         font-size: 20px;
         letter-spacing: 4px;
+    }
+    
+    .bazi-row {
+        font-size: 28px;
+        letter-spacing: 12px;
+    }
+    
+    .bazi-display {
+        padding: 20px;
     }
 }

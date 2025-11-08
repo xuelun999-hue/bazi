@@ -59,7 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 clientSecret: clientSecret
             });
 
-            paymentElement = elements.create('payment');
+            paymentElement = elements.create('payment', {
+                layout: 'tabs',
+                defaultValues: {
+                    billingDetails: {
+                        address: {
+                            postal_code: '00000'
+                        }
+                    }
+                }
+            });
             paymentElement.mount('#payment-element');
 
             // 隱藏加載，顯示付款表單
@@ -193,18 +202,66 @@ document.addEventListener('DOMContentLoaded', function() {
     function showResult(result) {
         hideLoading();
         
-        // 如果結果是字符串，直接顯示
-        // 如果結果是對象，嘗試提取八字信息
-        let displayResult = '';
+        // 提取八字結果
+        let baziText = '';
         if (typeof result === 'string') {
-            displayResult = result;
+            baziText = result;
         } else if (result && result.bazi) {
-            displayResult = result.bazi;
+            baziText = result.bazi;
         } else {
-            displayResult = '無法解析計算結果';
+            baziText = '無法解析計算結果';
         }
         
-        baziResultP.textContent = displayResult;
+        // 嘗試從結果中提取八字
+        const eightCharacters = extractEightCharacters(baziText);
+        
+        if (eightCharacters) {
+            displayEightCharacters(eightCharacters);
+        } else {
+            // 如果無法提取，顯示原始結果
+            baziResultP.textContent = baziText;
+        }
+        
         resultDiv.classList.remove('hidden');
+    }
+    
+    function extractEightCharacters(text) {
+        // 從示例中提取最後一行的八字：聖母枷鎖 思慮成疾
+        const lines = text.split('\n');
+        const lastLine = lines[lines.length - 1];
+        
+        // 檢查是否包含八個中文字符
+        const chineseChars = lastLine.match(/[\u4e00-\u9fff]/g);
+        if (chineseChars && chineseChars.length >= 8) {
+            return chineseChars.slice(0, 8); // 取前8個字符
+        }
+        
+        // 嘗試其他模式
+        const eightCharPattern = /([^\s]{4})[\s]*([^\s]{4})/;
+        const match = lastLine.match(eightCharPattern);
+        if (match) {
+            const first4 = match[1].match(/[\u4e00-\u9fff]/g) || [];
+            const second4 = match[2].match(/[\u4e00-\u9fff]/g) || [];
+            if (first4.length >= 4 && second4.length >= 4) {
+                return [...first4.slice(0, 4), ...second4.slice(0, 4)];
+            }
+        }
+        
+        return null;
+    }
+    
+    function displayEightCharacters(characters) {
+        if (characters.length !== 8) return;
+        
+        // 格式化為 4x2 顯示
+        const top4 = characters.slice(0, 4).join(' ');
+        const bottom4 = characters.slice(4, 8).join(' ');
+        
+        baziResultP.innerHTML = `
+            <div class="bazi-display">
+                <div class="bazi-row">${top4}</div>
+                <div class="bazi-row">${bottom4}</div>
+            </div>
+        `;
     }
 });

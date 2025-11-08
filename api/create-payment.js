@@ -26,6 +26,11 @@ export default async function handler(req, res) {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amount,
             currency: 'usd',
+            payment_method_options: {
+                card: {
+                    request_three_d_secure: 'automatic'
+                }
+            },
             metadata: {
                 service: '八字算命'
             }
