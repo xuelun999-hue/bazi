@@ -52,7 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ amount: 333 }) // US$3.33 (以分為單位)
             });
 
-            const { clientSecret } = await response.json();
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`API錯誤: ${response.status} - ${errorData.message || '未知錯誤'}`);
+            }
+
+            const data = await response.json();
+            const { clientSecret } = data;
+            
+            if (!clientSecret) {
+                throw new Error('無法獲取 clientSecret');
+            }
 
             // 創建 Stripe Elements
             elements = stripe.elements({
