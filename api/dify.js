@@ -55,7 +55,7 @@ export default async function handler(req, res) {
 
         const requestBody = {
             inputs: {
-                name: name,
+                nickname: name,  // Dify API 期望 nickname 而非 name
                 birth_year: birth_year,
                 birth_month: birth_month,
                 birth_day: birth_day,
