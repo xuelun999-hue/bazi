@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelPaymentBtn = document.getElementById('cancel-payment');
     const loadingText = document.getElementById('loading-text');
 
-    // 初始化 Stripe - 您需要提供正確的 publishable key
-    const stripe = Stripe('pk_test_51SDPrI1sY6VTIJ46YourPublishableKeyHere'); // 請替換為您的 publishable key
+    // 初始化 Stripe
+    const stripe = Stripe('pk_test_51SDPrI1sY6VTIJ46ATiACJu0gAAHj6UT1YEUyV4Lm1lI4mLqnUoJJJfhaNAeTljuy4vZwmLVFqQ95BE8hzLZ1B0p00fBGa7iSC');
     let elements, paymentElement;
     let currentFormData = null;
 
