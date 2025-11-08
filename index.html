@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>八字算命</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>八字算命</h1>
+        <form id="baziForm">
+            <div class="form-group">
+                <label for="name">姓名：</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="birthDate">出生日期：</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="birthTime">出生時辰：</label>
+                <select id="birthTime" name="birthTime" required>
+                    <option value="">請選擇時辰</option>
+                    <option value="子時">子時 (23:00-01:00)</option>
+                    <option value="丑時">丑時 (01:00-03:00)</option>
+                    <option value="寅時">寅時 (03:00-05:00)</option>
+                    <option value="卯時">卯時 (05:00-07:00)</option>
+                    <option value="辰時">辰時 (07:00-09:00)</option>
+                    <option value="巳時">巳時 (09:00-11:00)</option>
+                    <option value="午時">午時 (11:00-13:00)</option>
+                    <option value="未時">未時 (13:00-15:00)</option>
+                    <option value="申時">申時 (15:00-17:00)</option>
+                    <option value="酉時">酉時 (17:00-19:00)</option>
+                    <option value="戌時">戌時 (19:00-21:00)</option>
+                    <option value="亥時">亥時 (21:00-23:00)</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="payment-btn">接入付款</button>
+        </form>
+        
+        <div id="result" class="result hidden">
+            <h2>您的八字結果：</h2>
+            <p id="baziResult"></p>
+        </div>
+        
+        <div id="loading" class="loading hidden">
+            <p>正在計算您的八字...</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
