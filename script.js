@@ -167,6 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function callDifyAPI(name, birthDate, birthTime) {
+        console.log('準備調用 Dify API:', { name, birthDate, birthTime });
+        
         const response = await fetch('/api/dify', {
             method: 'POST',
             headers: {
@@ -180,7 +182,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (!response.ok) {
-            throw new Error(`API請求失敗: ${response.status}`);
+            const errorData = await response.json().catch(() => ({ message: '無法解析錯誤響應' }));
+            console.error('Dify API 錯誤:', { status: response.status, error: errorData });
+            throw new Error(`API請求失敗: ${response.status} - ${errorData.message || errorData.error || '未知錯誤'}`);
         }
 
         const data = await response.json();

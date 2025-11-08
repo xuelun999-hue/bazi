@@ -12,6 +12,10 @@ export default async function handler(req, res) {
         const { name, birthDate, birthTime } = req.body;
         
         console.log('收到請求:', { name, birthDate, birthTime });
+        console.log('環境變量檢查:', {
+            DIFY_API_URL: process.env.DIFY_API_URL ? '已設定' : '未設定',
+            DIFY_API_KEY: process.env.DIFY_API_KEY ? '已設定' : '未設定'
+        });
         
         const apiUrl = process.env.DIFY_API_URL || 'https://pro.aifunbox.com/v1/workflows/run';
         const apiKey = process.env.DIFY_API_KEY;
@@ -73,8 +77,13 @@ export default async function handler(req, res) {
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('API錯誤響應:', errorText);
-            throw new Error(`API請求失敗: ${response.status} - ${errorText}`);
+            console.error('API錯誤響應:', {
+                status: response.status,
+                statusText: response.statusText,
+                headers: Object.fromEntries(response.headers),
+                body: errorText
+            });
+            throw new Error(`API請求失敗: ${response.status} ${response.statusText} - ${errorText}`);
         }
 
         const data = await response.json();
