@@ -17,14 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // 模擬付款流程
-        const paymentConfirmed = await simulatePayment();
-        if (!paymentConfirmed) {
-            alert('付款失敗，請重試');
-            return;
-        }
-
-        // 顯示加載狀態
+        // 直接顯示加載狀態
         showLoading();
         
         try {
@@ -37,16 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    async function simulatePayment() {
-        // 模擬付款流程
-        return new Promise((resolve) => {
-            // 這裡可以集成真實的付款系統
-            const confirmed = confirm('確認付款並計算八字？');
-            setTimeout(() => {
-                resolve(confirmed);
-            }, 1000);
-        });
-    }
 
     async function callDifyAPI(name, birthDate, birthTime) {
         const response = await fetch('/api/dify', {

@@ -29,13 +29,30 @@ export default async function handler(req, res) {
         const birth_month = birthDateObj.getMonth() + 1; // getMonth() 返回 0-11
         const birth_day = birthDateObj.getDate();
 
+        // 將時辰轉換為小時數
+        const timeMap = {
+            "子時": 0,
+            "丑時": 2, 
+            "寅時": 4,
+            "卯時": 6,
+            "辰時": 8,
+            "巳時": 10,
+            "午時": 12,
+            "未時": 14,
+            "申時": 16,
+            "酉時": 18,
+            "戌時": 20,
+            "亥時": 22
+        };
+        const birth_hour = timeMap[birthTime] || 12;
+
         const requestBody = {
             inputs: {
                 name: name,
                 birth_year: birth_year,
                 birth_month: birth_month,
                 birth_day: birth_day,
-                birth_time: birthTime
+                birth_hour: birth_hour
             },
             response_mode: "blocking",
             user: "user-" + Date.now()
