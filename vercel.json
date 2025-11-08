@@ -1,13 +1,7 @@
 {
   "functions": {
-    "script.js": {
-      "runtime": "@vercel/static"
+    "api/dify.js": {
+      "runtime": "@vercel/node@18.x"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  }
 }

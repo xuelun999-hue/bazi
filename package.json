@@ -1,0 +1,16 @@
+{
+  "name": "bazi-fortune",
+  "version": "1.0.0",
+  "description": "八字算命網站 - 集成 Dify AI 工作流的命理分析服務",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "start": "vercel dev"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}
