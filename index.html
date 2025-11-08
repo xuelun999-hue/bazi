@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <video class="video-background" autoplay muted loop>
+        <source src="angel.mp4" type="video/mp4">
+    </video>
     <div class="container">
         <h1>天使八字</h1>
+        <div class="limited-time-offer">
+            <p>🎉 期間限定特惠 🎉</p>
+        </div>
         <form id="baziForm">
             <div class="form-group">
                 <label for="name">姓名：</label>
@@ -40,9 +46,6 @@
                 </select>
             </div>
             
-            <div class="price-info">
-                <p>服務費用：<strong>NT$111</strong></p>
-            </div>
             
             <button type="submit" class="payment-btn">遇見天使（NT$111）</button>
         </form>
