@@ -18,9 +18,12 @@ export default async function handler(req, res) {
         });
         
         const apiUrl = process.env.DIFY_API_URL || 'https://pro.aifunbox.com/v1/workflows/run';
+        
+        // 確保 URL 包含完整端點
+        const fullApiUrl = apiUrl.endsWith('/workflows/run') ? apiUrl : `${apiUrl}/workflows/run`;
         const apiKey = process.env.DIFY_API_KEY;
         
-        console.log('API配置:', { apiUrl, hasApiKey: !!apiKey });
+        console.log('API配置:', { apiUrl, fullApiUrl, hasApiKey: !!apiKey });
         
         if (!apiKey) {
             console.error('API key 未配置');
@@ -66,7 +69,7 @@ export default async function handler(req, res) {
 
         // Node.js 18+ 內建 fetch
         
-        const response = await fetch(apiUrl, {
+        const response = await fetch(fullApiUrl, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
