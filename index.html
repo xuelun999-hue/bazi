@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>八字算命</title>
+    <title>天使八字</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>八字算命</h1>
+        <h1>天使八字</h1>
         <form id="baziForm">
             <div class="form-group">
                 <label for="name">姓名：</label>
@@ -41,10 +41,10 @@
             </div>
             
             <div class="price-info">
-                <p>服務費用：<strong>$10 USD</strong></p>
+                <p>服務費用：<strong>NT$111</strong></p>
             </div>
             
-            <button type="submit" class="payment-btn">付款並開始算命</button>
+            <button type="submit" class="payment-btn">遇見天使（NT$111）</button>
         </form>
         
         <!-- Stripe 付款表單 -->
@@ -62,7 +62,7 @@
         </div>
         
         <div id="result" class="result hidden">
-            <h2>您的八字結果：</h2>
+            <h2>天使叮嚀：</h2>
             <p id="baziResult"></p>
         </div>
         
@@ -70,6 +70,14 @@
             <p>正在處理付款...</p>
             <p id="loading-text">請稍候...</p>
         </div>
+        
+        <!-- 版權和聯絡信息 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="copyright">© 2024 天使八字 - 你好我是綠老頭</p>
+                <p class="contact">客服聯絡：<a href="mailto:Jackeychen@2925.com">Jackeychen@2925.com</a></p>
+            </div>
+        </footer>
     </div>
     
     <!-- Stripe.js -->

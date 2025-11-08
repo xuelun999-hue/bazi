@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Microsoft YaHei', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 50%, #1B5E20 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@ h1 {
     color: #333;
     margin-bottom: 30px;
     font-size: 2.5em;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -62,15 +62,15 @@ input[type="text"]:focus,
 input[type="date"]:focus,
 select:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #4CAF50;
     background-color: white;
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
 }
 
 .payment-btn {
     width: 100%;
     padding: 18px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
     color: white;
     border: none;
     border-radius: 10px;
@@ -83,7 +83,7 @@ select:focus {
 
 .payment-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
 }
 
 .payment-btn:active {
@@ -112,19 +112,19 @@ select:focus {
 }
 
 .bazi-display {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border: 3px solid #d63384;
+    background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+    border: 3px solid #4CAF50;
     border-radius: 15px;
     padding: 30px;
     margin: 20px 0;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(214, 51, 132, 0.2);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
 }
 
 .bazi-row {
     font-size: 36px;
     font-weight: bold;
-    color: #d63384;
+    color: #2E7D32;
     letter-spacing: 20px;
     line-height: 1.8;
     font-family: 'KaiTi', '楷體', serif;
@@ -132,7 +132,7 @@ select:focus {
 }
 
 .bazi-row:first-child {
-    border-bottom: 2px solid #d63384;
+    border-bottom: 2px solid #4CAF50;
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
@@ -140,7 +140,7 @@ select:focus {
 .loading {
     margin-top: 30px;
     text-align: center;
-    color: #667eea;
+    color: #4CAF50;
     font-size: 18px;
 }
 
@@ -152,9 +152,9 @@ select:focus {
     text-align: center;
     margin: 20px 0;
     padding: 15px;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    background: linear-gradient(135deg, #E8F5E8, #F1F8E9);
     border-radius: 10px;
-    border: 2px solid #667eea;
+    border: 2px solid #4CAF50;
 }
 
 .price-info p {
@@ -247,4 +247,36 @@ select:focus {
     .bazi-display {
         padding: 20px;
     }
+}
+
+.footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #e1e1e1;
+    text-align: center;
+}
+
+.footer-content {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+.footer-content .copyright {
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.footer-content .contact a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-content .contact a:hover {
+    text-decoration: underline;
 }

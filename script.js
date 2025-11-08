@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ amount: 1000 }) // $10 USD
+                body: JSON.stringify({ amount: 11100 }) // NT$111 (以分為單位)
             });
 
             const { clientSecret } = await response.json();

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { amount = 1000 } = req.body; // 默認 10 元 (1000分)
+        const { amount = 11100 } = req.body; // 默認 NT$111 (11100分)
         
         const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
         
@@ -25,14 +25,14 @@ export default async function handler(req, res) {
         // 創建 Payment Intent
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amount,
-            currency: 'usd',
+            currency: 'twd',
             payment_method_options: {
                 card: {
                     request_three_d_secure: 'automatic'
                 }
             },
             metadata: {
-                service: '八字算命'
+                service: '天使八字'
             }
         });
 
