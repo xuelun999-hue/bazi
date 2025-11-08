@@ -23,18 +23,19 @@ export default async function handler(req, res) {
             return res.status(500).json({ message: 'API key not configured' });
         }
 
-        // 嘗試多種可能的參數格式
+        // 從出生日期中提取年月日
+        const birthDateObj = new Date(birthDate);
+        const birth_year = birthDateObj.getFullYear();
+        const birth_month = birthDateObj.getMonth() + 1; // getMonth() 返回 0-11
+        const birth_day = birthDateObj.getDate();
+
         const requestBody = {
             inputs: {
                 name: name,
-                birthDate: birthDate,
-                birthTime: birthTime,
-                "姓名": name,
-                "出生日期": birthDate,
-                "出生時辰": birthTime,
-                "用戶姓名": name,
-                "生日": birthDate,
-                "時辰": birthTime
+                birth_year: birth_year,
+                birth_month: birth_month,
+                birth_day: birth_day,
+                birth_time: birthTime
             },
             response_mode: "blocking",
             user: "user-" + Date.now()
