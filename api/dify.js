@@ -23,11 +23,18 @@ export default async function handler(req, res) {
             return res.status(500).json({ message: 'API key not configured' });
         }
 
+        // 嘗試多種可能的參數格式
         const requestBody = {
             inputs: {
                 name: name,
                 birthDate: birthDate,
-                birthTime: birthTime
+                birthTime: birthTime,
+                "姓名": name,
+                "出生日期": birthDate,
+                "出生時辰": birthTime,
+                "用戶姓名": name,
+                "生日": birthDate,
+                "時辰": birthTime
             },
             response_mode: "blocking",
             user: "user-" + Date.now()
@@ -47,7 +54,9 @@ export default async function handler(req, res) {
         });
 
         if (!response.ok) {
-            throw new Error(`API請求失敗: ${response.status}`);
+            const errorText = await response.text();
+            console.error('API錯誤響應:', errorText);
+            throw new Error(`API請求失敗: ${response.status} - ${errorText}`);
         }
 
         const data = await response.json();
