@@ -49,26 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function callDifyAPI(name, birthDate, birthTime) {
-        const apiUrl = 'https://pro.aifunbox.com/v1/workflows/run';
-        const apiKey = 'app-rgH07gXln3dGLWl3Rx8ZvmR1';
-        
-        const requestBody = {
-            inputs: {
+        const response = await fetch('/api/dify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 name: name,
                 birthDate: birthDate,
                 birthTime: birthTime
-            },
-            response_mode: "blocking",
-            user: "user-" + Date.now()
-        };
-
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
+            })
         });
 
         if (!response.ok) {
@@ -76,10 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const data = await response.json();
-        
-        // 假設Dify返回的數據結構中包含八字結果
-        // 您可能需要根據實際的Dify工作流返回結構調整這部分
-        return data.data?.outputs?.result || data.answer || '計算結果獲取失敗';
+        return data.result;
     }
 
     function showLoading() {

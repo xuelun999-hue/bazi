@@ -17,9 +17,25 @@
 - Vanilla JavaScript
 - Dify API
 
+## 環境配置
+
+1. 複製 `.env.example` 為 `.env`
+2. 在 `.env` 文件中設置您的 Dify API key：
+   ```
+   DIFY_API_KEY=your_actual_api_key_here
+   DIFY_API_URL=https://pro.aifunbox.com/v1/workflows/run
+   ```
+
 ## 部署
 
-本項目可以直接部署到 Vercel 或其他靜態託管平台。
+### Vercel 部署
+
+1. 推送代碼到 GitHub
+2. 在 Vercel 中連接 GitHub 倉庫
+3. 在 Vercel 環境變量中設置：
+   - `DIFY_API_KEY`: 您的 Dify API key
+   - `DIFY_API_URL`: https://pro.aifunbox.com/v1/workflows/run
+4. 點擊 Deploy
 
 ## 使用方法
 

@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "script.js": {
+      "runtime": "@vercel/static"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
