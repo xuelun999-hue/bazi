@@ -49,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const data = await response.json();
+        
+        // 調試：顯示完整響應
+        console.log('API 響應:', data);
+        
+        // 如果有 raw_response，也顯示出來
+        if (data.raw_response) {
+            console.log('原始 Dify 響應:', data.raw_response);
+        }
+        
         return data.result;
     }
 

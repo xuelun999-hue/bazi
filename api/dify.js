@@ -79,13 +79,38 @@ export default async function handler(req, res) {
 
         const data = await response.json();
         
-        console.log('Dify 響應:', data);
+        console.log('Dify 響應:', JSON.stringify(data, null, 2));
         
-        const result = data.data?.outputs?.result || data.answer || '計算結果獲取失敗';
+        // 嘗試多種可能的結果路徑
+        let result = null;
+        
+        // 常見的 Dify 響應格式
+        if (data.data?.outputs?.result) {
+            result = data.data.outputs.result;
+        } else if (data.data?.outputs?.text) {
+            result = data.data.outputs.text;
+        } else if (data.data?.outputs) {
+            // 獲取 outputs 中的第一個值
+            const outputs = data.data.outputs;
+            result = Object.values(outputs)[0];
+        } else if (data.answer) {
+            result = data.answer;
+        } else if (data.result) {
+            result = data.result;
+        } else if (data.text) {
+            result = data.text;
+        } else if (typeof data === 'string') {
+            result = data;
+        } else {
+            result = '收到響應但無法解析結果';
+        }
         
         console.log('提取結果:', result);
         
-        res.status(200).json({ result });
+        res.status(200).json({ 
+            result: result || '未能提取到結果',
+            raw_response: data // 調試用，顯示原始響應
+        });
         
     } catch (error) {
         console.error('API調用錯誤:', error);
