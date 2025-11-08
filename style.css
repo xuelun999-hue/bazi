@@ -122,6 +122,82 @@ select:focus {
     display: none;
 }
 
+.price-info {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    border-radius: 10px;
+    border: 2px solid #667eea;
+}
+
+.price-info p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.payment-form {
+    margin-top: 30px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e1e1e1;
+}
+
+.payment-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+#payment-element {
+    margin: 20px 0;
+}
+
+.payment-errors {
+    color: #e74c3c;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.cancel-btn {
+    width: 100%;
+    padding: 15px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 20px;

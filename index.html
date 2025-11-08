@@ -40,8 +40,26 @@
                 </select>
             </div>
             
-            <button type="submit" class="payment-btn">開始算命</button>
+            <div class="price-info">
+                <p>服務費用：<strong>$10 USD</strong></p>
+            </div>
+            
+            <button type="submit" class="payment-btn">付款並開始算命</button>
         </form>
+        
+        <!-- Stripe 付款表單 -->
+        <div id="payment-form" class="payment-form hidden">
+            <h2>安全付款</h2>
+            <div id="payment-element">
+                <!-- Stripe Elements 會在這裡創建付款表單 -->
+            </div>
+            <div id="payment-errors" class="payment-errors"></div>
+            <button id="submit-payment" class="payment-btn">
+                <span id="button-text">完成付款</span>
+                <span id="spinner" class="spinner hidden"></span>
+            </button>
+            <button id="cancel-payment" class="cancel-btn">取消</button>
+        </div>
         
         <div id="result" class="result hidden">
             <h2>您的八字結果：</h2>
@@ -49,10 +67,13 @@
         </div>
         
         <div id="loading" class="loading hidden">
-            <p>正在計算您的八字...</p>
+            <p>正在處理付款...</p>
+            <p id="loading-text">請稍候...</p>
         </div>
     </div>
     
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="script.js"></script>
 </body>
 </html>
