@@ -23,7 +23,12 @@ export default async function handler(req, res) {
         const fullApiUrl = apiUrl.endsWith('/workflows/run') ? apiUrl : `${apiUrl}/workflows/run`;
         const apiKey = process.env.DIFY_API_KEY;
         
-        console.log('API配置:', { apiUrl, fullApiUrl, hasApiKey: !!apiKey });
+        console.log('API配置:', { 
+            apiUrl, 
+            fullApiUrl, 
+            hasApiKey: !!apiKey,
+            apiKeyPrefix: apiKey ? apiKey.substring(0, 8) + '...' : 'undefined'
+        });
         
         if (!apiKey) {
             console.error('API key 未配置');
